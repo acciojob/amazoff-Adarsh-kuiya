@@ -68,11 +68,11 @@ public class OrderService {
     }
 
     public void deletePartnerById( String partnerId){
-
+   orderRepository.deletePartnerById(partnerId);
     }
 
     public void deleteOrderById( String orderId){
-
+   deleteOrderById(orderId);
     }
 
 
