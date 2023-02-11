@@ -95,7 +95,7 @@ public class OrderRepository {
         return numberOfOrders;
     }
 
-    public Integer returnLastDeliveryTime(String partnerId){
+    public String returnLastDeliveryTime(String partnerId){
 
         List<Order> ordersOfAPartner = orderPartnerMapping.get(partnerId);
 
@@ -105,7 +105,21 @@ public class OrderRepository {
             if(order.getDeliveryTime()>=latestTime)
                 latestTime = order.getDeliveryTime();
         }
-        return latestTime;
+        int hours = latestTime/60;
+        int minute = latestTime%60;
+
+        String strhours = Integer.toString(hours);
+        if(strhours.length()==1){
+            strhours = "0"+strhours;
+        }
+
+        String minutes = Integer.toString(minute);
+        if(minutes.length()==1){
+            minutes = "0" + minutes;
+        }
+        return strhours + ":" + minutes;
+
+
     }
 
     public void deletePartnerbyId(String partnerId){

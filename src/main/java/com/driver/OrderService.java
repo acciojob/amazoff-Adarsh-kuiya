@@ -56,15 +56,12 @@ public class OrderService {
     }
 
     public String callLatestTimeOfDelivery(String partnerId){
-        int minutes = orderRepository.returnLastDeliveryTime(partnerId);
-        return minutesToTimeString(minutes);
+
+          return orderRepository.returnLastDeliveryTime(partnerId);
+
     }
 
-    public String minutesToTimeString(int minutes) {
-        int hours = minutes / 60;
-        int min = minutes % 60;
-        return String.format("%02d:%02d", hours, min);
-    }
+
 
     public void callDeletePartnerbyId(String partnerId){
         orderRepository.deletePartnerbyId(partnerId);
