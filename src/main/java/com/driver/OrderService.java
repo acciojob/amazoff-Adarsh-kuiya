@@ -60,10 +60,20 @@ public class OrderService {
         return minutesToTimeString(minutes);
     }
 
-    public String minutesToTimeString(int minutes) {
-        int hours = minutes / 60;
-        int min = minutes % 60;
-        return String.format("%02d:%02d", hours, min);
+    public String minutesToTimeString(int minute) {
+        int hours = minute / 60;
+        int min = minute % 60;
+
+        String strHour= Integer.toString(hours);
+        if(strHour.length()==1){
+            strHour= "0"+strHour;
+        }
+
+        String minutes = Integer.toString(minute);
+        if(minutes.length()==1){
+            minutes = "0" + minutes;
+        }
+        return strHour + ":" + minutes;
     }
 
     public void callDeletePartnerbyId(String partnerId){
